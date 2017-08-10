@@ -6,10 +6,9 @@
 		"node": "8.1.4",
 		"npm": "5.3.0"
 	  },
-	  "scripts": {
+	"scripts": {
 		"start": "npm i --prefix server && npm start --prefix server",
 		"heroku-postbuild": "npm run heroku-postbuild --prefix server"
-	  }
 	},
 	"keywords": [],
 	"author": "",
