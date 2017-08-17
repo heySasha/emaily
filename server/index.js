@@ -1,6 +1,7 @@
 require('./config');
 require('./db/mongoose');
 require('./models/User');
+require('./models/Survey');
 require('./services/passport');
 
 const express = require('express');
@@ -21,14 +22,16 @@ app.use(passport.session());
 
 require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
-
+require('./routes/surveyRoutes')(app);
 
 if (process.env.NODE_ENV === 'production') {
 	app.use(express.static('client/build'));
 
 	app.get('*', (req, res) => {
-		res.sendFile(require('path').resolve(__dirname, 'client', 'build', 'index.html'));
-	})
+		res.sendFile(
+			require('path').resolve(__dirname, 'client', 'build', 'index.html')
+		);
+	});
 }
 
 app.listen(process.env.PORT, () => {
